@@ -169,6 +169,7 @@ const addProduct = async (req, res, next) => {
     price,
     quantity,
     brand,
+    discount,
     description,
     rating,
   } = req.body;
@@ -210,6 +211,7 @@ const addProduct = async (req, res, next) => {
     price,
     quantity,
     brand,
+    discount,
     description,
     rating,
   });
@@ -256,6 +258,7 @@ const editProductById = async (req, res, next) => {
     price = null,
     quantity = null,
     brand = null,
+    discount = null,
     description = null,
     rating = null,
   } = req.body;
@@ -342,6 +345,8 @@ const editProductById = async (req, res, next) => {
   product.price = price ?? product.price;
   product.quantity = quantity ?? product.quantity;
   product.brand = brand ?? product.brand;
+  product.discount = discount ?? product.discount;
+
   product.description = description ?? product.description;
   product.rating = rating ?? product.rating;
 
