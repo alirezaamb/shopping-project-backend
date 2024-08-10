@@ -37,6 +37,7 @@ const addUser = async (req, res, next) => {
     password,
     phoneNumber,
     address,
+    wishlist,
     role,
   } = req.body;
 
@@ -62,6 +63,7 @@ const addUser = async (req, res, next) => {
     password,
     phoneNumber,
     address,
+    wishlist,
     role,
   });
 
@@ -95,6 +97,7 @@ const editUserById = async (req, res, next) => {
     password = null,
     phoneNumber = null,
     address = null,
+    wishlist = null,
   } = req.body;
 
   const user = await User.findById(userId).select('+select');
@@ -128,6 +131,7 @@ const editUserById = async (req, res, next) => {
   }
   user.phoneNumber = phoneNumber ?? user.phoneNumber;
   user.address = address ?? user.address;
+  user.wishlist = Array.isArray(wishlist) ? wishlist : user.wishlist;
 
   user.save({ validateBeforeSave: true });
 

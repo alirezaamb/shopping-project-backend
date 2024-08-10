@@ -42,6 +42,34 @@ const UserSchema = new Schema(
       required: [true, 'address is required'],
       trim: true,
     },
+    wishlist: {
+      type: [
+        {
+          _id: {
+            type: String,
+            required: true,
+          },
+          name: {
+            type: String,
+            required: true,
+          },
+          price: {
+            type: Number,
+            required: true,
+          },
+          discount: {
+            type: Number,
+            required: true,
+          },
+          images: {
+            type: [String],
+            trim: true,
+            default: ['products-images-default.jpeg'],
+          },
+        },
+      ],
+      default: [],
+    },
     role: {
       type: String,
       default: 'USER',
